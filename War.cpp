@@ -6,6 +6,8 @@
 #include "war.h"
 #include <iostream>
 #include <algorithm>
+#include <sstream>
+#include <vector>
 
 // Constructor: initialize gen and deck, then deal cards to players
 War::War(std::default_random_engine& _gen) 
@@ -88,6 +90,30 @@ void War::updateState(bool cardsMatch) {
     }
 }
 
+// Print two cards side by side
+void War::printCardsSideBySide(Card* cardA, Card* cardB) {
+    std::string artA = cardA->art();
+    std::string artB = cardB->art();
+    
+    // Split each card's art into lines
+    std::vector<std::string> linesA, linesB;
+    std::istringstream ssA(artA), ssB(artB);
+    std::string line;
+    
+    while (std::getline(ssA, line)) linesA.push_back(line);
+    while (std::getline(ssB, line)) linesB.push_back(line);
+    
+    // Print header
+    std::cout << "   Player A          Player B" << std::endl;
+    
+    // Print cards side by side
+    for (size_t i = 0; i < linesA.size(); ++i) {
+        std::cout << "   " << linesA[i] << "      " << linesB[i] << std::endl;
+    }
+    std::cout << "  " << cardA->name() << "   " << cardB->name() << std::endl;
+    std::cout << std::endl;
+}
+
 // Execute one sub-round of play
 WinState War::subRound() {
     bool cardsMatch = false;
@@ -106,8 +132,8 @@ WinState War::subRound() {
         // Place face-up cards
         auto [cardA, cardB] = placeCards();
         
-        std::cout << "Player A plays " << cardA->name() << std::endl;
-        std::cout << "Player B plays " << cardB->name() << std::endl;
+        // Display the cards with ASCII art
+        printCardsSideBySide(cardA, cardB);
         
         // Compare cards
         if (cardA->getValue() > cardB->getValue()) {

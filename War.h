@@ -45,6 +45,7 @@ private:
     void collectRound(std::queue<Card*>& to);
     WinState checkForWin();
     void updateState(bool cardsMatch);
+    void printCardsSideBySide(Card* cardA, Card* cardB);
 };
 
 #endif

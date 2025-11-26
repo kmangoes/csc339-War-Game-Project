@@ -24,9 +24,12 @@ public:
     
     static std::string suitName(Suit s);
     static std::string valueName(Value v);
+    static std::string suitSymbol(Suit s);
+    static std::string valueSymbol(Value v);
     std::string name() const { 
         return valueName(faceValue) + " of " + suitName(suit); 
     }
+    std::string art() const;  // Returns ASCII art of the card
 
 private:
     Suit suit;
