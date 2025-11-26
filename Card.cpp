@@ -37,10 +37,10 @@ std::string Card::valueName(Value v) {
 
 std::string Card::suitSymbol(Suit s) {
     switch(s) {
-        case Suit::clubs: return "♣";
-        case Suit::diamonds: return "♦";
-        case Suit::hearts: return "♥";
-        case Suit::spades: return "♠";
+        case Suit::clubs: return "\u2663";    // ♣
+        case Suit::diamonds: return "\u2666"; // ♦
+        case Suit::hearts: return "\u2665";   // ♥
+        case Suit::spades: return "\u2660";   // ♠
         default: return "?";
     }
 }
@@ -73,13 +73,13 @@ std::string Card::art() const {
     std::string botVal = (val.length() == 1) ? " " + val : val;
     
     std::string result;
-    result += ".------.\n";
-    result += "|" + topVal + "    |\n";
-    result += "|      |\n";
-    result += "|  " + s + "       |\n";
-    result += "|      |\n";
-    result += "|    " + botVal + "|\n";
-    result += "'------'";
+    result += ".---------.\n";
+    result += "|" + topVal + "       |\n";
+    result += "|         |\n";
+    result += "|    " + s + "    |\n";
+    result += "|         |\n";
+    result += "|       " + botVal + "|\n";
+    result += "'---------'";
     
     return result;
 }
