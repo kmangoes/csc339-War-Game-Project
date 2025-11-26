@@ -3,7 +3,7 @@
   Description: Driver code for the War card game
 */
 
-#include "war.h"
+#include "War.h"
 #include <iostream>
 #include <random>
 #include <chrono>
