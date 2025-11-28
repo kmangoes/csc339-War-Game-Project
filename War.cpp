@@ -3,7 +3,7 @@
   Description: War class implementation
 */
 
-#include "war.h"
+#include "War.h"
 #include <iostream>
 #include <algorithm>
 #include <sstream>
